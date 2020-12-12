@@ -1,0 +1,15 @@
+<%= form_for @todo_list, url: todo_lists_path(@todo_list) do |f| %>
+  
+  <div class="form-group">
+     <%= f.label :campaign_id, 'Estimated Duration' %>
+     <%= f.collection_select(:campaign_id, Campaign.all, :id, :title, {}, {:class=>'form-control'}) %>
+  </div>
+  
+  
+  <div class="form-group">
+    <%= f.label :title, 'Todo Title' %>
+    <%= f.text_field :title, class:'form-control' %>
+  </div>'
+    
+  <%= f.submit  'Create Todo List', class:'btn btn-info btn-md' %>
+<% end %>

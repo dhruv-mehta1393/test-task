@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a class="navbar-brand" href="/">The Idea App</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <% if current_user.present?%>
+        
+         <li class="nav-item active">
+            <%= link_to "Create Campaigns", new_campaign_path,  class:'nav-link' %>
+        </li>
+
+        <li class="nav-item active">
+          <%= link_to "Create TODO List", new_todo_list_path,  class:'nav-link' %>
+        </li>
+
+        <li class="nav-item active">
+          <%= link_to "Create Discussion Topics", new_discussion_path,  class:'nav-link' %>
+        </li>
+
+        <li class="nav-item active">
+          <%= link_to "Novice Users", users_path,  class:'nav-link' %>
+        </li>
+
+        <li class="nav-item active">
+            <%= link_to "Log out", destroy_user_session_path, method: "delete", class:'nav-link' %>
+        </li>
+        
+        <% else %>
+        <li class="nav-item active">
+            <%= link_to "Log In", new_user_session_path,  class:'nav-link' %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

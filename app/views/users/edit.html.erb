@@ -1,0 +1,9 @@
+
+<%= form_for @user do |f| %>
+  <div class="form-group">
+    <%= f.label :status, 'status' %>
+    <%= f.select :status, options_for_select(User.statuses.map {|key, value| [key.capitalize, key]}, @user.status),{},{ :class => 'form-control' }  %>
+  </div>
+   <%= f.submit  'Update User Status', class:'btn btn-info btn-md' %>
+
+  <% end %>

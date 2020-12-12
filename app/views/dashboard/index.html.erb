@@ -1,0 +1,42 @@
+<table class="table">
+<h1>Campaign List</h1>
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Campaign Name</th>2
+      <th scope="col">Action</th>2
+    </tr>
+  </thead>
+  <tbody>
+    <% @campaigns.each do |campaign| %>  
+    <tr >
+        <td><%= campaign.id%></td>
+        <td><%= campaign.title %></td>
+        <td><%= link_to 'VIEW', campaign %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<table class="table">
+<h1>Discussion Topics</h1>
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Campaign Name</th>
+      <th scope="col">Topic Name</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @discussions.each do |discussion| %>  
+    <tr >
+        <td><%= discussion.id%></td>
+        <td><%= discussion.campaign.title %></td>
+        <td><%= discussion.title %></td>
+
+        <td><%= link_to 'VIEW', discussion %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

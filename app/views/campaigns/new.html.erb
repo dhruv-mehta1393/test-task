@@ -1,0 +1,27 @@
+<%= form_for @campaign do |f| %>
+  <div class="form-group">
+    <%= f.label :title, 'Campaign Name' %>
+    <%= f.text_field :title, class:'form-control' %>
+  </div>
+  <div class="form-group">
+     <%= f.label :est_duration, 'Estimated Duration' %>
+     <%= f.select :est_duration, options_for_select(Campaign.est_durations.map {|key, value| [key.capitalize, key]}, @campaign.est_duration),{},{ :class => 'form-control' }  %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :purpose, 'Purpose Of Campaign' %>
+     <%= f.text_area :purpose , class:'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.text_field :all_tags, placeholder: "Tags separated with comma" %>
+  </div>
+
+  <%= f.fields_for :todos do |todo| %>
+    <%= todo.label :title, 'todo Title' %>
+    <%= todo.text_field :title, class:'form-control' %>
+  <% end %>
+  <%= f.submit  'Create Campaign', class:'btn btn-info btn-md' %>
+
+
+  <% end %>

@@ -1,0 +1,2 @@
+module Campaigns::CommentsHelper
+end

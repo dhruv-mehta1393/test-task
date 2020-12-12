@@ -1,0 +1,142 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+	<div class="col-md-12">
+    <h1>Campaign</h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+               <section class="post-heading">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div class="media">
+                              <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="40" height="40" alt="...">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <a href="#" class="anchor-username"><h4 class="media-heading"><%= @discussion.user.username %></h4></a> 
+                                <a href="#" class="anchor-time">51 mins</a>
+                              </div>
+                            </div>
+                        </div>
+                         <div class="col-md-1">
+                             <a href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                         </div>
+                    </div>             
+               </section>
+               <section class="post-body">
+                   <p><%= @discussion.campaign.purpose %></p>
+               </section>
+               <section class="post-footer">
+                   <hr>
+                   <div class="post-footer-option container">
+                        <ul class="list-unstyled">
+                            <li><a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> Like</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-comment"></i> Comment</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
+                        </ul>
+                   </div>
+                      <% @discussion.campaign.comments.each do |comment|%>
+                       <div class="post-footer-comment-wrapper">
+                        <div class="comment">
+                              <div class="media">
+                                <div class="media-left">
+                                  <a href="#">
+                                    <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="32" height="32" alt="...">
+                                  </a>
+                                </div>
+                                <div class="media-body">
+                                  <a href="#" class="anchor-username"><h4 class="media-heading"><%= current_user.email %></h4></a> 
+                                    <span><%= comment.title%></span>
+                                </div>
+                              </div>
+                        </div>
+                      </div>
+                  <% end %>
+
+               </section>
+            </div>
+        </div>   
+	</div>
+
+    <div class="col-md-12">
+    <h1>Discussion Topic</h1>
+        <div class="panel panel-default">
+            <div class="panel-body">
+               <section class="post-heading">
+                    <div class="row">
+                        <div class="col-md-11">
+                            <div class="media">
+                              <div class="media-left">
+                                <a href="#">
+                                  <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="40" height="40" alt="...">
+                                </a>
+                              </div>
+                              <div class="media-body">
+                                <a href="#" class="anchor-username"><h4 class="media-heading"><%= @discussion.user.username %></h4></a> 
+                                <a href="#" class="anchor-time">51 mins</a>
+                              </div>
+                            </div>
+                        </div>
+                         <div class="col-md-1">
+                             <a href="#"><i class="glyphicon glyphicon-chevron-down"></i></a>
+                         </div>
+                    </div>             
+               </section>
+               <section class="post-body">
+                   <p><%= @discussion.title %></p>
+               </section>
+               <section class="post-footer">
+                   <hr>
+                   <div class="post-footer-option container">
+                        <ul class="list-unstyled">
+                            <li><a href="#"><i class="glyphicon glyphicon-thumbs-up"></i> Like</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-comment"></i> Comment</a></li>
+                            <li><a href="#"><i class="glyphicon glyphicon-share-alt"></i> Share</a></li>
+                        </ul>
+                   </div>
+                      <% @discussion.comments.each do |comment|%>
+                       <div class="post-footer-comment-wrapper">
+                        <div class="comment">
+                              <div class="media">
+                                <div class="media-left">
+                                  <a href="#">
+                                    <img class="media-object photo-profile" src="http://0.gravatar.com/avatar/38d618563e55e6082adf4c8f8c13f3e4?s=40&d=mm&r=g" width="32" height="32" alt="...">
+                                  </a>
+                                </div>
+                                <div class="media-body">
+                                  <a href="#" class="anchor-username"><h4 class="media-heading"><%= current_user.email %></h4></a> 
+                                    <span><%= comment.title%></span>
+                                </div>
+                              </div>
+                        </div>
+                      </div>
+                  <% end %>
+
+               </section>
+            </div>
+        </div>   
+	</div>
+</div>
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="container">
+  <div class="post-comments">
+
+    <%= form_for [@discussion, Comment.new] do |f| %>
+        <div class="form-group">
+            <%= f.text_area :title, class: "form-control", placeholder: "Add a comment" %>
+        </div>
+        <%= f.submit class: "btn btn-primary" %>
+    <% end %>
+  </div>
+  <!-- post-comments -->
+</div>

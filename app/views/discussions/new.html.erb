@@ -1,0 +1,8 @@
+<%= form_for @discussion do |f| %>
+  <div class="form-group">
+  <%= f.collection_select(:campaign_id, Campaign.all, :id, :title, {}, {:class=>'form-control'}) %>
+    <%= f.label :title, 'Discussion Toppic for Campaign' %>
+    <%= f.text_field :title, class:'form-control' %>
+  </div>
+  <%= f.submit  'Create Campaign', class:'btn btn-info btn-md' %>
+<% end %>
